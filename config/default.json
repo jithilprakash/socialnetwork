@@ -1,0 +1,7 @@
+{
+    "mongoURI":"mongodb://naruto:naruto20@ds027749.mlab.com:27749/devconnector",
+    "jwtSecret":"NarutoUzumaki",
+    "githubClientId":"54581bda1cd27317996a",
+    "githubSecret":"7e7bbf18e9b07c83d325b62e771b0ac6bdf69e10"
+}
+
