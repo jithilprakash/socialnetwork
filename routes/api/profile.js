@@ -4,6 +4,7 @@ const { check, validationResult } = require("express-validator/check");
 const auth = require("../../middlewares/auth");
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
+const Post = require("../../models/Post");
 const request = require("request");
 const config = require("config");
 
@@ -153,6 +154,7 @@ router.get("/user/:user_id", async (req, res) => {
 
 router.delete("/", auth, async (req, res) => {
   try {
+    await Post.deleteMany({user:req.user.id})
     await Profile.findOneAndDelete({ user: req.user.id });
     await User.findOneAndDelete({ _id: req.user.id });
     res.json({ msg: "User deleted" });
@@ -232,7 +234,7 @@ router.delete("/experience/:exp_id", [auth], async (req, res) => {
 
     profile.experience.splice(removeIndex, 1);
     await profile.save();
-    res.json({ msg: "Experience deleted" });
+    res.json(profile);
   } catch (error) {
     console.log(error.message);
     res.status(500).send("Server Error");
@@ -310,7 +312,7 @@ router.delete("/education/:edu_id", [auth], async (req, res) => {
 
     profile.education.splice(removeIndex, 1);
     await profile.save();
-    res.json({ msg: "Education deleted" });
+    res.json(profile);
   } catch (error) {
     console.log(error.message);
     res.status(500).send("Server Error");
