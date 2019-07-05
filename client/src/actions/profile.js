@@ -3,7 +3,9 @@ import {
   PROFILE_ERROR,
   UPDATE_PROFILE,
   CLEAR_PROFILE,
-  ACCOUNT_DELETED
+  ACCOUNT_DELETED,
+  GET_REPOS,
+  GET_PROFILES
 } from "./types";
 import axios from "axios";
 import { setAlert } from "./alert";
@@ -23,6 +25,60 @@ export const getCurrentProfile = () => async dispatch => {
   }
 };
 
+//get all profile
+export const getProfiles = () => async dispatch => {
+  dispatch({ type: CLEAR_PROFILE });
+  try {
+    const res = await axios.get("/api/profile");
+    console.log(res);
+    dispatch({
+      type: GET_PROFILES,
+      payload: res.data
+    });
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: error.response.statusText, status: error.response.status }
+    });
+  }
+};
+
+//get all profile by ID
+export const getProfileById = userId => async dispatch => {
+  try {
+    // console.log("profile action");
+    const res = await axios.get(`/api/profile/user/${userId}`);
+    console.log(res);
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data
+    });
+  } catch (error) {
+    console.log("--error", error.message);
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: error.response.statusText, status: error.response.status }
+    });
+  }
+};
+
+//get github repos
+export const getGithubRepos = username => async dispatch => {
+  try {
+    const res = await axios.get(`/api/profile/github/${username}`);
+    console.log("github", res);
+    dispatch({
+      type: GET_REPOS,
+      payload: res.data
+    });
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: error.response.statusText, status: error.response.status }
+    });
+  }
+};
+
 // Create or Update
 export const createProfile = (
   formData,
@@ -31,10 +87,13 @@ export const createProfile = (
 ) => async dispatch => {
   // console.log("create profile", formData);
   try {
+    
     const config = {
       headers: { "Content-Type": "application/json" }
     };
+    // console.log("create profile action", formData,config);
     const res = await axios.post("/api/profile", formData, config);
+    console.log("response", res);
     dispatch({
       type: GET_PROFILE,
       payload: res.data
@@ -43,10 +102,12 @@ export const createProfile = (
       setAlert(edit ? "Profile Updated" : "Profile Created", "primary", 3000)
     );
 
+    console.log("history", history);
     if (!edit) {
       history.push("/dashboard");
     }
   } catch (err) {
+    console.log(err.message);
     const errors = err.response.data.errors;
     if (errors) {
       errors.forEach(error => {
@@ -179,7 +240,7 @@ export const deleteAccount = () => async dispatch => {
       });
 
       dispatch(setAlert("Your account has been deleted!", "primary", 3000));
-    } catch (err) { 
+    } catch (err) {
       dispatch({
         type: PROFILE_ERROR,
         payload: { msg: err.response.statusText, status: err.response.status }

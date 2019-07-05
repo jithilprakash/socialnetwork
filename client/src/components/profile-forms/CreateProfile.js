@@ -1,7 +1,6 @@
 import React, { useState, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { STATES } from "mongoose";
 import { Link, withRouter } from "react-router-dom";
 import { createProfile } from "../../actions/profile";
 
@@ -43,8 +42,8 @@ const CreateProfile = ({ createProfile, history }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log("Submit", formData);
-    createProfile({formData, history});
+    // console.log("Submit", formData);
+    createProfile(formData, history );
   };
   return (
     <Fragment>

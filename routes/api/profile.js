@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { check, validationResult } = require("express-validator/check");
+const { check, validationResult } = require("express-validator");
 const auth = require("../../middlewares/auth");
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
@@ -10,7 +10,7 @@ const config = require("config");
 
 //@route    GET
 //@desc     get profile me
-//@access   Private
+//@access   Private 
 
 router.get("/me", auth, async (req, res) => {
   try {
@@ -36,16 +36,21 @@ router.post(
   "/",
   [
     auth,
-    check("status", "Status is required")
-      .not()
-      .isEmpty(),
-    check("skills", "Skills are required")
-      .not()
-      .isEmpty()
+    [
+      check("status", "Status is required")
+        .not()
+        .isEmpty(),
+      check("skills", "Skills are required")
+        .not()
+        .isEmpty()
+    ]
   ],
   async (req, res) => {
+    console.log(req.body)
     const errors = validationResult(req);
+    console.log(errors.isEmpty())
     if (!errors.isEmpty()) {
+      console.log("create profile error", errors);
       return res.status(400).json({ errors: errors.array() });
     }
     const {
@@ -137,9 +142,7 @@ router.get("/user/:user_id", async (req, res) => {
       ["name", "avatar"]
     );
     if (!profiles) {
-      return res
-        .status(400)
-        .json({ msg: "No profile found for this user" });
+      return res.status(400).json({ msg: "No profile found for this user" });
     }
 
     res.json(profiles);
@@ -154,7 +157,7 @@ router.get("/user/:user_id", async (req, res) => {
 
 router.delete("/", auth, async (req, res) => {
   try {
-    await Post.deleteMany({user:req.user.id})
+    await Post.deleteMany({ user: req.user.id });
     await Profile.findOneAndDelete({ user: req.user.id });
     await User.findOneAndDelete({ _id: req.user.id });
     res.json({ msg: "User deleted" });
