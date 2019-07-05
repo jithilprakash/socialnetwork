@@ -18,18 +18,18 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
       //   console.log("password do not match");
       setAlert("Password do not match", "danger", 2000);
     } else {
-      register({ name, email, password });
+      await register({ name, email, password });
     }
   };
 
   if (isAuthenticated) {
-    console.log("Authenticated",isAuthenticated)
+    console.log("Authenticated", isAuthenticated);
     return <Redirect to='/dashboard' />;
   }
   return (
@@ -96,7 +96,7 @@ Register.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(

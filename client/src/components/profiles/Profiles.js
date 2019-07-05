@@ -11,7 +11,7 @@ const Profile = ({ getProfiles, profile: { profiles, loading } }) => {
   }, [getProfiles]);
   return (
     <Fragment>
-      {loading ? (
+      {loading && profiles === null ? (
         <Spinner />
       ) : (
         <Fragment>
@@ -26,7 +26,10 @@ const Profile = ({ getProfiles, profile: { profiles, loading } }) => {
                 <ProfileItem key={profile._id} profile={profile} />
               ))
             ) : (
-              <h4>No Profiles found</h4>
+              <h4>
+                No Profiles found
+                <Spinner />
+              </h4>
             )}
           </div>
         </Fragment>
