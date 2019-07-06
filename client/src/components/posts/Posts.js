@@ -5,6 +5,7 @@ import { getPosts } from "../../actions/post";
 import Spinner from "../layout/Spinner";
 import PostItem from "./PostItem";
 import PostForm from "./PostForm";
+import CommentForm from "../post/CommentForm";
 
 const Posts = ({ post: { posts, loading }, getPosts }) => {
   useEffect(() => {
@@ -22,6 +23,7 @@ const Posts = ({ post: { posts, loading }, getPosts }) => {
       <div className='posts'>
         {posts.map(post => (
           <PostItem key={post._id} post={post} />
+          
         ))}
       </div>
     </Fragment>
