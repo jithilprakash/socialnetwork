@@ -6,6 +6,7 @@ import Spinner from "../layout/Spinner";
 import PostItem from "./PostItem";
 import PostForm from "./PostForm";
 import CommentForm from "../post/CommentForm";
+import "./poststyles.css"
 
 const Posts = ({ post: { posts, loading }, getPosts }) => {
   useEffect(() => {

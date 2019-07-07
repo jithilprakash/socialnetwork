@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
+import "./authstyles.css";
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -17,22 +18,25 @@ const Login = ({ login, isAuthenticated }) => {
 
   const onSubmit = e => {
     e.preventDefault();
+
     login(email, password);
   };
-  
+
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
   return (
-    <Fragment>
-      <h1 className='large text-primary'>Login</h1>
+    <div className='login-mod'>
       <p className='lead'>
         <i className='fas fa-user' /> Sign into your account
       </p>
+
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
           <input
             type='email'
+            class='form-control'
+            aria-label='Sizing example input'
             placeholder='Email Address'
             name='email'
             value={email}
@@ -59,7 +63,7 @@ const Login = ({ login, isAuthenticated }) => {
       <p className='my-1'>
         Don't have an account? <Link to='/register'>Register</Link>
       </p>
-    </Fragment>
+    </div>
   );
 };
 

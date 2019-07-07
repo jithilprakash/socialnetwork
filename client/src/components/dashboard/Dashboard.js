@@ -7,6 +7,7 @@ import Spinner from "../layout/Spinner";
 import DashboardAction from "./DashboardAction";
 import Experience from "./Experience";
 import Education from "./Education";
+import "./dashboardstyles.css";
 
 const Dashboard = ({
   getCurrentProfile,
@@ -17,12 +18,12 @@ const Dashboard = ({
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
-  return loading && profile === null ? (
+  return loading || profile === null ? (
     <Spinner />
   ) : (
     <Fragment>
       <h1 className='large text-primary'>Dashboard</h1>
-      <p className='lead'>
+      <p className='lead italic-text'>
         <i className='fas fa-user' />
         {`  Welcome ${user && user.name}`}
       </p>
@@ -30,9 +31,15 @@ const Dashboard = ({
         {profile !== null ? (
           //   <Fragment>has</Fragment>
           <Fragment>
-            <DashboardAction />
-            <Experience experience={profile.experience} />
-            <Education education={profile.education} />
+            <div className='dashboardAction card-shadow'>
+              <DashboardAction />
+            </div>
+            <div className='dashboardAction card-shadow'>
+              <Experience experience={profile.experience} />
+            </div>
+            <div className='dashboardAction card-shadow'>
+              <Education education={profile.education} />
+            </div>
             <div className='my-2'>
               <button
                 className='btn btn-danger'

@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Moment from "react-moment";
-
+import "./profilestyles.css"
 const ProfileExperience = ({
   experience: { company, title, location,current, from, to, description }
 }) => {
   return (
-    <div>
+    <div className="padding-20">
       <h3 className='text-dark'>{company}</h3>
       <p>
         <Moment format='YYYY/MM/DD'>{from}</Moment> -{" "}

@@ -45,7 +45,7 @@ const EditProfile = ({
       linkedin: loading || !profile.linkedin ? "" : profile.linkedin,
       instagram: loading || !profile.instagram ? "" : profile.instagram
     });
-  }, [loading,getCurrentProfile]);
+  }, [loading, getCurrentProfile]);
 
   const {
     company,
@@ -68,19 +68,23 @@ const EditProfile = ({
   const onSubmit = e => {
     e.preventDefault();
     console.log("Submit", formData);
-    createProfile( formData, history,true );
+    createProfile(formData, history, true);
   };
   return (
     <Fragment>
-      <h1 className='large text-primary'>Create Your Profile</h1>
+      <h1 className='large text-primary'>Edit Your Profile</h1>
       <p className='lead'>
-        <i className='fas fa-user' /> Let's get some information to make your
-        profile stand out
+        <i className='fas fa-user' /> Update your profile anytime
       </p>
-      <small>* = required field</small>
+      {/* <small>* = required field</small> */}
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
-          <select value={status} onChange={e => onChange(e)} name='status'>
+          <select
+            value={status}
+            onChange={e => onChange(e)}
+            className='form-control'
+            name='status'
+          >
             <option value='0'>* Select Professional Status</option>
             <option value='Developer'>Developer</option>
             <option value='Junior Developer'>Junior Developer</option>
@@ -98,18 +102,20 @@ const EditProfile = ({
         <div className='form-group'>
           <input
             type='text'
+            className='form-control'
             placeholder='Company'
             value={company}
             onChange={e => onChange(e)}
             name='company'
           />
-          <small className='form-text'>
-            Could be your own company or one you work for
-          </small>
         </div>
+        <small className='form-text'>
+            Name of the organization please
+          </small>
         <div className='form-group'>
           <input
             type='text'
+            className='form-control'
             placeholder='Website'
             name='website'
             value={website}
@@ -122,14 +128,13 @@ const EditProfile = ({
         <div className='form-group'>
           <input
             type='text'
+            className='form-control'
             placeholder='Location'
             name='location'
             value={location}
             onChange={e => onChange(e)}
           />
-          <small className='form-text'>
-            City & state suggested (eg. Boston, MA)
-          </small>
+          <small className='form-text'>City & state</small>
         </div>
         <div className='form-group'>
           <input
@@ -137,6 +142,7 @@ const EditProfile = ({
             placeholder='* Skills'
             name='skills'
             value={skills}
+            className='form-control'
             onChange={e => onChange(e)}
           />
           <small className='form-text'>
@@ -148,6 +154,7 @@ const EditProfile = ({
             type='text'
             placeholder='Github Username'
             name='githubusername'
+            className='form-control'
             value={githubusername}
             onChange={e => onChange(e)}
           />
@@ -161,6 +168,7 @@ const EditProfile = ({
             placeholder='A short bio of yourself'
             name='bio'
             value={bio}
+            className='form-control'
             onChange={e => onChange(e)}
           />
           <small className='form-text'>Tell us a little about yourself</small>
@@ -183,6 +191,7 @@ const EditProfile = ({
               <i className='fab fa-twitter fa-2x' />
               <input
                 type='text'
+                className="form-control"
                 placeholder='Twitter URL'
                 name='twitter'
                 value={twitter}
@@ -194,6 +203,7 @@ const EditProfile = ({
               <i className='fab fa-facebook fa-2x' />
               <input
                 type='text'
+                className="form-control"
                 placeholder='Facebook URL'
                 name='facebook'
                 value={facebook}
@@ -205,6 +215,7 @@ const EditProfile = ({
               <i className='fab fa-youtube fa-2x' />
               <input
                 type='text'
+                className="form-control"
                 placeholder='YouTube URL'
                 name='youtube'
                 value={youtube}
@@ -216,6 +227,7 @@ const EditProfile = ({
               <i className='fab fa-linkedin fa-2x' />
               <input
                 type='text'
+                className="form-control"
                 placeholder='Linkedin URL'
                 name='linkedin'
                 value={linkedin}
@@ -227,6 +239,7 @@ const EditProfile = ({
               <i className='fab fa-instagram fa-2x' />
               <input
                 type='text'
+                className="form-control"
                 placeholder='Instagram URL'
                 name='instagram'
                 value={instagram}
@@ -236,7 +249,7 @@ const EditProfile = ({
           </Fragment>
         )}
 
-        <input type='submit' className='btn btn-primary my-1' />
+        <input type='submit' className="form-control" className='btn btn-primary my-1' />
         <Link className='btn btn-light my-1' to='/dashboard'>
           Go Back
         </Link>

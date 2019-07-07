@@ -1,0 +1,24 @@
+.dashboardAction {
+  margin-bottom: 30px;
+}
+
+.lead {
+  font-size: 15px;
+}
+
+link {
+  font-size: 15px;
+}
+
+.italic-text {
+  font-style: oblique;
+}
+
+.card-shadow {
+  padding: 20px;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 1px 5px 6px -6px gray;
+}

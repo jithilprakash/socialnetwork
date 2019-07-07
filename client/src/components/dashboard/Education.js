@@ -29,7 +29,7 @@ const Education = ({ education, deleteEducation }) => {
   ));
   return (
     <Fragment>
-      <h2 className='my-2'>Education Credentials</h2>
+      <h2  className='lead italic-text'>Education Credentials</h2>
       {education.length < 1 || education === null ? (
         <h4>Education details not added yet</h4>
       ) : (

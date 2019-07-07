@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import "./profilestyles.css"
 
 const ProfileItem = ({
   profile: { user, status, company, location, skills }
@@ -13,7 +14,7 @@ const ProfileItem = ({
           <div className='profile bg-light'>
             <img src={user.avatar} alt='' className='round-img' />
             <div>
-              <h2>{user.name}</h2>
+              <h6>{user.name}</h6>
               <p>
                 {status} {company && <span> at {company}</span>}
               </p>

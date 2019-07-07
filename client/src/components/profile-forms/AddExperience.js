@@ -31,11 +31,12 @@ const AddExperience = ({ addExperience, history }) => {
         <i className='fas fa-code-branch' /> Add any developer/programming
         positions that you have had in the past
       </p>
-      <small>* = required field</small>
+      {/* <small>* = required field</small> */}
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
           <input
             type='text'
+            className="form-control"
             placeholder='* Job Title'
             value={title}
             onChange={e => onChange(e)}
@@ -45,6 +46,7 @@ const AddExperience = ({ addExperience, history }) => {
         </div>
         <div className='form-group'>
           <input
+          className="form-control"
             type='text'
             placeholder='* Company'
             name='company'
@@ -56,6 +58,7 @@ const AddExperience = ({ addExperience, history }) => {
         <div className='form-group'>
           <input
             type='text'
+            className="form-control"
             placeholder='Location'
             name='location'
             value={location}
@@ -66,6 +69,7 @@ const AddExperience = ({ addExperience, history }) => {
           <h4>From Date</h4>
           <input
             type='date'
+            className="form-control"
             name='from'
             value={from}
             onChange={e => onChange(e)}
@@ -76,7 +80,7 @@ const AddExperience = ({ addExperience, history }) => {
             <input
               type='checkbox'
               name='current'
-
+              // className="form-control"
               value={current}
               checked={current}
               onChange={e => {
@@ -95,6 +99,7 @@ const AddExperience = ({ addExperience, history }) => {
             type='date'
             name='to'
             value={to}
+            className="form-control"
             disabled={toDateDisabled ? "disabled" : ""}
             onChange={e => onChange(e)}
           />
@@ -104,12 +109,13 @@ const AddExperience = ({ addExperience, history }) => {
             name='description'
             cols='30'
             rows='5'
+            className="form-control"
             value={description}
             onChange={e => onChange(e)}
             placeholder='Job Description'
           />
         </div>
-        <input type='submit' className='btn btn-primary my-1' />
+        <input type='submit' className="form-control" className='btn btn-primary my-1' />
         <Link className='btn btn-light my-1' to='/dashboard'>
           Go Back
         </Link>

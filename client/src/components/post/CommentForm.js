@@ -7,9 +7,9 @@ const CommentForm = ({postId,addComment}) => {
     const [text,setText] = useState('')
     return (
         <div class='post-form'>
-      <div class='bg-primary p'>
-        <h3>Say Something...</h3>
-      </div>
+      {/* <div class='bg-primary p'> */}
+        {/* <h3>Say Something...</h3> */}
+      {/* </div> */}
       <form
         class='form my-1'
         onSubmit={e => {
@@ -23,8 +23,9 @@ const CommentForm = ({postId,addComment}) => {
           cols='30'
           rows='5'
           value={text}
+          className="form-control"
           onChange={e => setText(e.target.value)}
-          placeholder='Create a post'
+          placeholder='Comment..'
           required
         />
         <input type='submit' class='btn btn-dark my-1' value='Submit' />

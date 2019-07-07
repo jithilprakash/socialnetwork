@@ -43,7 +43,7 @@ const CreateProfile = ({ createProfile, history }) => {
   const onSubmit = e => {
     e.preventDefault();
     // console.log("Submit", formData);
-    createProfile(formData, history );
+    createProfile(formData, history);
   };
   return (
     <Fragment>
@@ -55,7 +55,12 @@ const CreateProfile = ({ createProfile, history }) => {
       <small>* = required field</small>
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
-          <select value={status} onChange={e => onChange(e)} name='status'>
+          <select
+            value={status}
+            onChange={e => onChange(e)}
+            className='form-control'
+            name='status'
+          >
             <option value='0'>* Select Professional Status</option>
             <option value='Developer'>Developer</option>
             <option value='Junior Developer'>Junior Developer</option>
@@ -73,6 +78,7 @@ const CreateProfile = ({ createProfile, history }) => {
         <div className='form-group'>
           <input
             type='text'
+            className='form-control'
             placeholder='Company'
             value={company}
             onChange={e => onChange(e)}
@@ -84,6 +90,7 @@ const CreateProfile = ({ createProfile, history }) => {
         </div>
         <div className='form-group'>
           <input
+            className='form-control'
             type='text'
             placeholder='Website'
             name='website'
@@ -96,6 +103,7 @@ const CreateProfile = ({ createProfile, history }) => {
         </div>
         <div className='form-group'>
           <input
+            className='form-control'
             type='text'
             placeholder='Location'
             name='location'
@@ -108,6 +116,7 @@ const CreateProfile = ({ createProfile, history }) => {
         </div>
         <div className='form-group'>
           <input
+            className='form-control'
             type='text'
             placeholder='* Skills'
             name='skills'
@@ -121,6 +130,7 @@ const CreateProfile = ({ createProfile, history }) => {
         <div className='form-group'>
           <input
             type='text'
+            className='form-control'
             placeholder='Github Username'
             name='githubusername'
             value={githubusername}
@@ -133,6 +143,7 @@ const CreateProfile = ({ createProfile, history }) => {
         </div>
         <div className='form-group'>
           <textarea
+            className='form-control'
             placeholder='A short bio of yourself'
             name='bio'
             value={bio}
@@ -158,6 +169,7 @@ const CreateProfile = ({ createProfile, history }) => {
               <i className='fab fa-twitter fa-2x' />
               <input
                 type='text'
+                className="form-control"
                 placeholder='Twitter URL'
                 name='twitter'
                 value={twitter}
@@ -169,6 +181,7 @@ const CreateProfile = ({ createProfile, history }) => {
               <i className='fab fa-facebook fa-2x' />
               <input
                 type='text'
+                className="form-control"
                 placeholder='Facebook URL'
                 name='facebook'
                 value={facebook}
@@ -180,6 +193,7 @@ const CreateProfile = ({ createProfile, history }) => {
               <i className='fab fa-youtube fa-2x' />
               <input
                 type='text'
+                className="form-control"
                 placeholder='YouTube URL'
                 name='youtube'
                 value={youtube}
@@ -191,6 +205,7 @@ const CreateProfile = ({ createProfile, history }) => {
               <i className='fab fa-linkedin fa-2x' />
               <input
                 type='text'
+                className="form-control"
                 placeholder='Linkedin URL'
                 name='linkedin'
                 value={linkedin}
@@ -202,6 +217,7 @@ const CreateProfile = ({ createProfile, history }) => {
               <i className='fab fa-instagram fa-2x' />
               <input
                 type='text'
+                className="form-control"
                 placeholder='Instagram URL'
                 name='instagram'
                 value={instagram}
@@ -211,7 +227,7 @@ const CreateProfile = ({ createProfile, history }) => {
           </Fragment>
         )}
 
-        <input type='submit' className='btn btn-primary my-1' />
+        <input type='submit' className="form-control" className='btn btn-primary my-1' />
         <Link className='btn btn-light my-1' to='/dashboard'>
           Go Back
         </Link>

@@ -30,7 +30,7 @@ const AddEducation = ({ addEducation, history }) => {
       <p className='lead'>
         <i className='fas fa-code-branch' /> Schooling!
       </p>
-      <small>* = required field</small>
+      {/* <small>* = required field</small> */}
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
           <input
@@ -39,6 +39,7 @@ const AddEducation = ({ addEducation, history }) => {
             value={school}
             onChange={e => onChange(e)}
             name='school'
+            className="form-control"
             required
           />
         </div>
@@ -48,6 +49,7 @@ const AddEducation = ({ addEducation, history }) => {
             placeholder='* Degree'
             name='degree'
             value={degree}
+            className="form-control"
             onChange={e => onChange(e)}
             required
           />
@@ -59,6 +61,7 @@ const AddEducation = ({ addEducation, history }) => {
             name='fieldofstudy'
             value={fieldofstudy}
             onChange={e => onChange(e)}
+            className="form-control"
           />
         </div>
         <div className='form-group'>
@@ -67,6 +70,7 @@ const AddEducation = ({ addEducation, history }) => {
             type='date'
             name='from'
             value={from}
+            className="form-control"
             onChange={e => onChange(e)}
           />
         </div>
@@ -75,7 +79,7 @@ const AddEducation = ({ addEducation, history }) => {
             <input
               type='checkbox'
               name='current'
-        
+              // className="form-control"
               value={current}
               checked={current}
               onChange={e => {
@@ -93,6 +97,7 @@ const AddEducation = ({ addEducation, history }) => {
           <input
             type='date'
             name='to'
+            className="form-control"
             value={to}
             disabled={toDateDisabled ? "disabled" : ""}
             onChange={e => onChange(e)}
@@ -104,11 +109,12 @@ const AddEducation = ({ addEducation, history }) => {
             cols='30'
             rows='5'
             value={description}
+            className="form-control"
             onChange={e => onChange(e)}
             placeholder='Job Description'
           />
         </div>
-        <input type='submit' className='btn btn-primary my-1' />
+        <input type='submit' className="form-control" className='btn btn-primary my-1' />
         <Link className='btn btn-light my-1' to='/dashboard'>
           Go Back
         </Link>

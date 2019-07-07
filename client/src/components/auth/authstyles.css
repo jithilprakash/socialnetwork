@@ -1,0 +1,11 @@
+.text-primary {
+  font-size: 25px;
+}
+
+.login-mod {
+  margin-left: 15%;
+  width: 70%;
+  height: 100%;
+  padding: 20px;
+  box-shadow: 0 8px 9px -6px black;
+}

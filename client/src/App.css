@@ -381,7 +381,7 @@ button {
 }
 
 .profile-top img {
-  width: 250px;
+  width: 150px;
 }
 
 .profile-top .icons a {
@@ -504,11 +504,11 @@ button {
   }
 
   .large {
-    font-size: 2rem;
+    font-size: 1rem;
   }
 
   .lead {
-    font-size: 1rem;
+    font-size: 0.5rem;
   }
 
   /* Navbar */
